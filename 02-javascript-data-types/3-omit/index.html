@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<script>
+
+
+  function createGetter(field) {
+    return (obj) => (
+      field.split('.').reduce((acc, part) => acc && acc[part], obj)
+    );
+  }
+
+  const obj = {
+    foo: {
+      bar: 23
+    }
+  };
+
+  const getter = createGetter('foo.bar');
+
+  console.log(getter(obj));
+  console.log(getter(obj));
+
+
+  function invertObj(obj) {
+    return Object.fromEntries(
+      Object.entries(obj).map(item => item.reverse())
+    );
+  }
+
+  console.log(invertObj({key: 'valval'}));
+
+</script>
+
+
+</body>
+</html>
